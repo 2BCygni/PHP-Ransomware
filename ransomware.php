@@ -1,6 +1,4 @@
 <?php
-$secret_key = 'Fuck1ngH4rdc0reK3y!*';
-$secret_iv = 'V3ry__D1ff1culT_1n1t1al1s4t10n_v3ct0r';
 $encrypt_method = "AES-256-CBC";
 
 function cipher($file, $destination, $encrypt_method, $key, $iv){
