@@ -24,5 +24,5 @@ ex :
 <img src="https://image.prntscr.com/image/kwhlHo-TSIGuRUf1dTvmPQ.png">
 
 ## Todo
-- [✗] Detect file extension via first header bytes of the file - in PHP -
+- [✓] Detect file extension via first header bytes of the file - in PHP -
 
