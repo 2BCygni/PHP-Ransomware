@@ -14,5 +14,5 @@ ex : ```php ransomware.php cipher C:\Users\XXX\Desktop\ Fuck1ngH4rdc0reK3y!*.V3r
 ex : ```php ransomware.php decipher C:\Users\XXX\Desktop\ Fuck1ngH4rdc0reK3y!*.V3ry_D1ff1culT_1n1t1al1s4t10n_v3ct0r```
 
 ## Todo
-- [x] Detect file extension via first header bytes of the file - in PHP -
+- [✗] Detect file extension via first header bytes of the file - in PHP -
 
